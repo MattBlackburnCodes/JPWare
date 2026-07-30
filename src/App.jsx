@@ -90,7 +90,7 @@ function App() {
 
       <section className="gallery-room section-pad">
         <p className="eyebrow">06 — Gallery Room</p><h2>Step inside.</h2>
-        <div className="wall" aria-label="A gallery wall of Jasmine Ware paintings">{artworks.slice(1,6).map((art) => <button key={art.slug} onClick={() => setSelected(art)} aria-label={`View ${art.title}`}><img src={art.image} alt="" loading="lazy" /></button>)}</div>
+        <div className="wall" aria-label="A gallery wall of Jasmine Ware paintings">{artworks.slice(-5).map((art) => <button key={art.slug} onClick={() => setSelected(art)} aria-label={`View ${art.title}`}><img src={art.image} alt="" loading="lazy" /></button>)}</div>
       </section>
 
       <section className="journal section-pad">
