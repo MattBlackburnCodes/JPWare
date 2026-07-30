@@ -57,6 +57,7 @@ function App() {
 
       <section className="journey section-pad">
         <p className="eyebrow">02 — The Journey</p>
+        <p className="journey-note">An emotional journey, not a dated chronology.</p>
         {[
           ['Finding my voice','What cannot be said can still be seen.','Shape becomes language. Color becomes memory. The canvas holds what the body no longer can.'],
           ['Black womanhood','Softness is not the opposite of power.','These figures take up space without asking permission—vulnerable, complex, and becoming.'],
@@ -102,15 +103,14 @@ function App() {
         <p className="eyebrow">08 — Commission a Story</p>
         <div className="commission-grid"><div><h2>Let’s create something<br /><i>that speaks for you.</i></h2><p>A commission begins with a feeling, a memory, or a person you want to hold differently.</p></div>
           <form onSubmit={(e) => e.preventDefault()}>
-            <label>What memory or emotion should this painting hold?<textarea rows="3" /></label>
-            <div className="form-row"><label>Desired colors<input type="text" /></label><label>Canvas size<select defaultValue=""><option value="" disabled>Select</option><option>Small</option><option>Medium</option><option>Large</option></select></label></div>
+            <label>Tell Jasmine what you have in mind<textarea rows="7" placeholder="Share the memory, person, feeling, colors, size, budget, or timeline—whatever matters to the story." /></label>
             <div className="form-row"><label>Your name<input type="text" /></label><label>Email<input type="email" /></label></div>
             <button type="submit">Begin the conversation ↗</button><small>Form placeholder — connect Jasmine’s preferred inquiry email before launch.</small>
           </form>
         </div>
       </section>
 
-      <footer><blockquote>Every painting begins with my story.<br />The moment you see yourself in it…<br /><em>it becomes yours.</em></blockquote><div className="footer-row"><a href="https://www.instagram.com/j_drewitt" target="_blank" rel="noreferrer">Instagram ↗</a><a href="#commission">Commission inquiry ↗</a><span>© {new Date().getFullYear()} Jasmine Ware</span></div></footer>
+      <footer><blockquote>Every painting begins with my story.<br />The moment you see yourself in it…<br /><em>it becomes yours.</em></blockquote><div className="footer-row"><a href="https://www.instagram.com/j_drewitt" target="_blank" rel="noreferrer">Instagram ↗</a><a href="#commission">Commission inquiry ↗</a><a href="https://www.blackburn.works" target="_blank" rel="noreferrer">Blackburn Works LLC ↗</a><span>© {new Date().getFullYear()} Jasmine Ware</span></div></footer>
     </main>
 
     {selected && <div className="art-dialog" role="dialog" aria-modal="true" aria-label={selected.title}>
