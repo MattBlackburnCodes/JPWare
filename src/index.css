@@ -1,0 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Italiana&display=swap');
+:root{font-family:'DM Sans',sans-serif;color:#f6f2eb;background:#0b0b0b;font-synthesis:none;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;background:#0b0b0b}body.locked{overflow:hidden}
+button,input,textarea,select{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit}img{display:block;max-width:100%}::selection{color:#0b0b0b;background:#c9a34e}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

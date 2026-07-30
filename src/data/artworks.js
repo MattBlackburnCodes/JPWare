@@ -1,0 +1,10 @@
+export const artworks = [
+  { slug:'empty-flesh', title:'Empty Flesh', year:'2025', theme:'Transformation', medium:'Acrylic on canvas', dimensions:'Dimensions to be added', status:'Not for sale', image:'/art/empty-flesh.png', statement:'A figure dissolves into something celestial—desire, memory, and selfhood held in the same body.' },
+  { slug:'weather-within', title:'The Weather Within', year:'2025', theme:'Healing', medium:'Acrylic on canvas', dimensions:'Dimensions to be added', status:'Inquire', image:'/art/weather-within.png', statement:'A body becomes shoreline. A crown becomes a storm. This is the quiet labor of surviving your own weather.' },
+  { slug:'blue-crown', title:'Blue Crown', year:'2025', theme:'Black Womanhood', medium:'Acrylic on canvas', dimensions:'Dimensions to be added', status:'Inquire', image:'/art/blue-crown.png', statement:'A portrait in profile, crowned in impossible blue: unapologetic softness rendered at monumental scale.' },
+  { slug:'split-vision', title:'Split Vision', year:'2025', theme:'Identity', medium:'Acrylic on canvas', dimensions:'Dimensions to be added', status:'Inquire', image:'/art/split-vision.png', statement:'Two faces, one gesture, and the tension between what is hidden and what refuses to stay unseen.' },
+  { slug:'cupid', title:'Struck', year:'2025', theme:'Love', medium:'Mixed media on canvas', dimensions:'Dimensions to be added', status:'Inquire', image:'/art/cupid.png', statement:'Love arrives as both offering and impact: beautiful, bright, and impossible to receive without being changed.' },
+  { slug:'golden-bloom', title:'Golden Bloom', year:'2025', theme:'Dreams', medium:'Acrylic and gold leaf on canvas', dimensions:'Dimensions to be added', status:'Inquire', image:'/art/golden-bloom.png', statement:'Botanical forms move through darkness, each fleck of gold catching the light like a thought becoming visible.' },
+]
+
+export const themes = ['All','Black Womanhood','Identity','Love','Healing','Transformation','Dreams']
