@@ -57,7 +57,6 @@ function App() {
 
       <section className="journey section-pad">
         <p className="eyebrow">02 — The Journey</p>
-        <p className="journey-note">An emotional journey, not a dated chronology.</p>
         {[
           ['Finding my voice','What cannot be said can still be seen.','Shape becomes language. Color becomes memory. The canvas holds what the body no longer can.'],
           ['Black womanhood','Softness is not the opposite of power.','These figures take up space without asking permission—vulnerable, complex, and becoming.'],
