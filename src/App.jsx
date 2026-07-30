@@ -46,7 +46,10 @@ function App() {
           <div className="why-copy">
             <p>Some become poems. Others become paint.</p>
             <p>For Jasmine Ware, every canvas becomes a conversation between emotion and identity.</p>
-            <p className="editable">Artist statement placeholder — replace with Jasmine’s own words.</p>
+            <blockquote className="artist-motto">
+              “I only have time for bad moments, not bad days. Every storm runs out of rain.”
+              <cite>— Jasmine’s motto</cite>
+            </blockquote>
           </div>
         </div>
         <div className="portrait-block">
