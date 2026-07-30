@@ -77,7 +77,7 @@ function App() {
         <div className="studio-title"><p className="eyebrow">04 — Inside the Studio</p><h2>Late night<br /><i>art sessions.</i></h2></div>
         <div className="studio-grid">
           <figure className="studio-main"><img src="/art/up-in-smoke-wip.png" alt="Jasmine painting white flowing lines for Up in Smoke" loading="lazy" /><figcaption>Current WIP — “Up in Smoke”</figcaption></figure>
-          <figure className="studio-side"><img src="/art/empty-flesh-studio.png" alt="Jasmine beside the finished Empty Flesh painting" loading="lazy" /><figcaption>From late-night layers to varnish</figcaption></figure>
+          <figure className="studio-side"><img src="/art/empty-flesh-studio-cropped.png" alt="Jasmine beside the finished Empty Flesh painting" loading="lazy" /><figcaption>From late-night layers to varnish</figcaption></figure>
         </div>
         <ol className="process">{['Concept','Sketch','Painting','Layers','Finished piece'].map((step,i) => <li key={step}><b>{i+1}</b><span>{step}</span></li>)}</ol>
       </section>
