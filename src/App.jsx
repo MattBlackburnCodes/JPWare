@@ -7,19 +7,35 @@ function App() {
   const [theme, setTheme] = useState('All')
   const [selected, setSelected] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [arrivalArt, setArrivalArt] = useState(0)
 
   useEffect(() => {
     document.body.classList.toggle('locked', !entered || Boolean(selected))
     return () => document.body.classList.remove('locked')
   }, [entered, selected])
 
+  useEffect(() => {
+    if (entered || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+    const interval = window.setInterval(() => {
+      setArrivalArt((current) => (current + 1) % artworks.length)
+    }, 5200)
+    return () => window.clearInterval(interval)
+  }, [entered])
+
   const filtered = theme === 'All' ? artworks : artworks.filter((art) => art.theme === theme)
 
   return <div className="site-shell">
     {!entered && <section className="arrival" aria-label="Welcome to Jasmine Ware">
+      <div className="arrival-gallery" aria-hidden="true">
+        {artworks.map((art, index) => (
+          <img key={art.slug} className={index === arrivalArt ? 'active' : ''} src={art.image} alt="" />
+        ))}
+      </div>
+      <div className="arrival-shade" />
       <div className="grain" />
       <p className="arrival-line">Every canvas begins with a feeling.</p>
       <div className="arrival-name"><span>Jasmine Ware</span><small>Visual storyteller</small></div>
+      <span className="arrival-count">{String(arrivalArt + 1).padStart(2,'0')} / {String(artworks.length).padStart(2,'0')}</span>
       <button className="enter-button" onClick={() => setEntered(true)}><span>Enter her world</span></button>
     </section>}
 
@@ -36,8 +52,18 @@ function App() {
         <div className="hero-kicker">An evolving archive of feeling</div>
         <h1><span>I don’t paint people.</span><em>I paint feelings.</em></h1>
         <div className="hero-art"><img src="/art/empty-flesh.png" alt="Empty Flesh, a surreal figure on a luminous yellow ground" /><div className="gold-mark" /></div>
-        <p className="scroll-note">Scroll slowly<br />The story lives in the details</p>
       </section>
+
+      <aside className="upcoming-show" aria-labelledby="upcoming-show-title">
+        <div className="show-date" aria-label="September 26"><span>Sep</span><strong>26</strong></div>
+        <div className="show-copy">
+          <p className="eyebrow">Upcoming exhibition</p>
+          <h2 id="upcoming-show-title">Pancakes &amp; Booze</h2>
+          <p>Jasmine Ware · Penn Social · Washington, D.C.</p>
+        </div>
+        <figure className="show-image"><img src="/art/gallery-installation.png" alt="A gallery installation featuring several paintings by Jasmine Ware" /><figcaption>Installation view</figcaption></figure>
+        <a href="https://www.pennsocialdc.com/" target="_blank" rel="noreferrer">Explore the venue <span>↗</span></a>
+      </aside>
 
       <section className="why section-pad" id="story">
         <p className="eyebrow">01 — Meet Jasmine</p>
@@ -81,28 +107,21 @@ function App() {
           <figure className="studio-main"><img src="/art/up-in-smoke-wip-cropped.png" alt="Jasmine painting white flowing lines for Up in Smoke" loading="lazy" /><figcaption>Current WIP — “Up in Smoke”</figcaption></figure>
           <figure className="studio-side"><img src="/art/empty-flesh-studio-cropped.png" alt="Jasmine beside the finished Empty Flesh painting" loading="lazy" /><figcaption>From late-night layers to varnish</figcaption></figure>
         </div>
-        <ol className="process">{['Concept','Sketch','Painting','Layers','Finished piece'].map((step,i) => <li key={step}><b>{i+1}</b><span>{step}</span></li>)}</ol>
+        <div className="studio-note">
+          <p className="eyebrow">The work after midnight</p>
+          <p>Jasmine’s studio practice is intuitive and layered—an idea begins quietly, then finds its shape through color, texture, and repetition. These late-night sessions are where emotion becomes image and a canvas begins to speak.</p>
+        </div>
       </section>
 
-      <section className="themes section-pad">
-        <p className="eyebrow">05 — Emotional Index</p>
-        <div className="theme-intro"><h2>What are you<br />carrying today?</h2><p>Choose a feeling. Let the room respond.</p></div>
+      <section className="themes section-pad" id="gallery">
+        <p className="eyebrow">05 — The Gallery</p>
+        <div className="theme-intro"><h2>Find the feeling.<br />Enter the work.</h2><p>Explore the full collection or filter the room by theme.</p></div>
         <div className="theme-buttons">{themes.map((item) => <button key={item} className={theme === item ? 'active' : ''} onClick={() => setTheme(item)}>{item}</button>)}</div>
-        <div className="theme-results" aria-live="polite">{filtered.map((art) => <button key={art.slug} onClick={() => setSelected(art)}><img src={art.image} alt="" loading="lazy" /><span>{art.title}</span></button>)}</div>
-      </section>
-
-      <section className="gallery-room section-pad">
-        <p className="eyebrow">06 — Gallery Room</p><h2>Step inside.</h2>
-        <div className="wall" aria-label="A gallery wall of Jasmine Ware paintings">{artworks.slice(-5).map((art) => <button key={art.slug} onClick={() => setSelected(art)} aria-label={`View ${art.title}`}><img src={art.image} alt="" loading="lazy" /></button>)}</div>
-      </section>
-
-      <section className="journal section-pad">
-        <p className="eyebrow">07 — Studio Journal</p>
-        <article><div className="journal-date">Aug<br />2025</div><img src="/art/dial-tone.png" alt="A painting of a phone resting on a red flower against black" loading="lazy" /><div className="journal-copy"><span>Thinking of a master plan</span><h2>Some ideas arrive after midnight.</h2><p>A pencil. A quiet room. The first shape of something not yet named.</p><p className="editable">Reflection placeholder — Jasmine can add the story of this work here.</p></div></article>
+        <div className="wall" aria-live="polite" aria-label={`${theme} gallery selection`}>{filtered.map((art) => <button key={art.slug} onClick={() => setSelected(art)} aria-label={`View ${art.title}`}><img src={art.image} alt="" loading="lazy" /><span>{art.title}</span></button>)}</div>
       </section>
 
       <section className="commission section-pad" id="commission">
-        <p className="eyebrow">08 — Commission a Story</p>
+        <p className="eyebrow">06 — Commission a Story</p>
         <div className="commission-grid"><div><h2>Let’s create something<br /><i>that speaks for you.</i></h2><p>A commission begins with a feeling, a memory, or a person you want to hold differently.</p></div>
           <form onSubmit={(e) => e.preventDefault()}>
             <label>Tell Jasmine what you have in mind<textarea rows="7" placeholder="Share the memory, person, feeling, colors, size, budget, or timeline—whatever matters to the story." /></label>
