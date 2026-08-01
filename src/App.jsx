@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useForm, ValidationError } from '@formspree/react'
 import { artworks, themes } from './data/artworks'
 import './App.css'
 
@@ -8,6 +9,7 @@ function App() {
   const [selected, setSelected] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const [arrivalArt, setArrivalArt] = useState(0)
+  const [formState, handleFormSubmit] = useForm('mrenwovk')
 
   useEffect(() => {
     document.body.classList.toggle('locked', !entered || Boolean(selected))
@@ -123,11 +125,23 @@ function App() {
       <section className="commission section-pad" id="commission">
         <p className="eyebrow">06 — Commission a Story</p>
         <div className="commission-grid"><div><h2>Let’s create something<br /><i>that speaks for you.</i></h2><p>A commission begins with a feeling, a memory, or a person you want to hold differently.</p></div>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <label>Tell Jasmine what you have in mind<textarea rows="7" placeholder="Share the memory, person, feeling, colors, size, budget, or timeline—whatever matters to the story." /></label>
-            <div className="form-row"><label>Your name<input type="text" /></label><label>Email<input type="email" /></label></div>
-            <button type="submit">Begin the conversation ↗</button><small>Form placeholder — connect Jasmine’s preferred inquiry email before launch.</small>
-          </form>
+          {formState.succeeded ? <div className="form-success" role="status">
+            <p className="eyebrow">Inquiry received</p>
+            <h3>Thank you for sharing your story.</h3>
+            <p>Jasmine has received your commission inquiry and will be in touch soon.</p>
+          </div> : <form onSubmit={handleFormSubmit}>
+            <label htmlFor="commission-message">Tell Jasmine what you have in mind<textarea id="commission-message" name="message" rows="7" required placeholder="Share the memory, person, feeling, colors, size, budget, or timeline—whatever matters to the story." /></label>
+            <ValidationError prefix="Commission details" field="message" errors={formState.errors} />
+            <div className="form-row">
+              <label htmlFor="commission-name">Your name<input id="commission-name" name="name" type="text" autoComplete="name" required /></label>
+              <label htmlFor="commission-email">Email<input id="commission-email" name="email" type="email" autoComplete="email" required /></label>
+            </div>
+            <ValidationError prefix="Name" field="name" errors={formState.errors} />
+            <ValidationError prefix="Email" field="email" errors={formState.errors} />
+            <button type="submit" disabled={formState.submitting}>{formState.submitting ? 'Sending your inquiry…' : 'Begin the conversation ↗'}</button>
+            <ValidationError prefix="Form" errors={formState.errors} />
+            <small>Commission inquiries are sent securely through Formspree.</small>
+          </form>}
         </div>
       </section>
 
