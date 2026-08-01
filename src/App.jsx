@@ -79,7 +79,7 @@ function App() {
           </div>
         </div>
         <div className="portrait-block">
-          <img src="/art/jasmine-portrait.png" alt="Jasmine Ware in a quiet moment with pencil in hand" />
+          <img src="/art/jasmine-portrait-cropped.png" alt="Jasmine Ware in a quiet moment with pencil in hand" />
           <blockquote>“Artists are here to disturb the peace.” <cite>— James Baldwin</cite></blockquote>
         </div>
       </section>
