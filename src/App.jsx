@@ -72,17 +72,13 @@ function App() {
         <div className="why-grid">
           <h2>Some stories refuse<br />to stay inside us.</h2>
           <div className="why-copy">
-            <p>Some become poems. Others become paint.</p>
+            <p>Some stories are told. Others have to be painted.</p>
             <p>For Jasmine Ware, every canvas becomes a conversation between emotion and identity.</p>
-            <blockquote className="artist-motto">
-              “I only have time for bad moments, not bad days. Every storm runs out of rain.”
-              <cite>— Jasmine’s motto</cite>
-            </blockquote>
           </div>
         </div>
         <div className="portrait-block">
           <img src="/art/jasmine-portrait-cropped.png" alt="Jasmine Ware in a quiet moment with pencil in hand" />
-          <blockquote>“Artists are here to disturb the peace.” <cite>— James Baldwin</cite></blockquote>
+          <blockquote className="portrait-motto">“I only have time for bad moments, not bad days. Every storm runs out of rain.” <cite>— Jasmine Ware</cite></blockquote>
         </div>
       </section>
 
@@ -151,7 +147,17 @@ function App() {
     {selected && <div className="art-dialog" role="dialog" aria-modal="true" aria-label={selected.title}>
       <button className="dialog-close" onClick={() => setSelected(null)}>Close ×</button>
       <div className="dialog-image"><img src={selected.image} alt={`${selected.title} by Jasmine Ware`} /></div>
-      <div className="dialog-copy"><p className="eyebrow">{selected.theme} — {selected.year}</p><h2>{selected.title}</h2><p className="statement">{selected.statement}</p><dl><div><dt>Medium</dt><dd>{selected.medium}</dd></div><div><dt>Dimensions</dt><dd>{selected.dimensions}</dd></div><div><dt>Availability</dt><dd>{selected.status}</dd></div></dl><p className="editable">Artist note placeholder — replace with Jasmine’s own words.</p><a href="#commission" onClick={() => setSelected(null)}>Commission a story ↗</a></div>
+      <div className="dialog-copy">
+        <p className="eyebrow">{selected.theme}{selected.year && ` — ${selected.year}`}</p>
+        <h2>{selected.title}</h2>
+        <p className="statement">{selected.statement}</p>
+        <dl>
+          {selected.medium && <div><dt>Medium</dt><dd>{selected.medium}</dd></div>}
+          {selected.dimensions && <div><dt>Dimensions</dt><dd>{selected.dimensions}</dd></div>}
+          <div><dt>Availability</dt><dd>{selected.status}</dd></div>
+        </dl>
+        <a href="#commission" onClick={() => setSelected(null)}>Commission a story ↗</a>
+      </div>
     </div>}
   </div>
 }

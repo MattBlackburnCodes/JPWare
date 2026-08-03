@@ -18,3 +18,5 @@ footer{padding:10rem 6vw 3rem}footer blockquote{margin:0 0 10rem;text-align:cent
 .studio-note{display:grid;grid-template-columns:.6fr 1.4fr;gap:8vw;align-items:start;margin-top:6rem;padding-top:2rem;border-top:1px solid #999185}.studio-note .eyebrow{margin:0;color:#665f56}.studio-note>p:last-child{max-width:720px;margin:0;font:400 clamp(1.45rem,2.4vw,2.5rem)/1.45 var(--serif)}
 @media(max-width:800px){.studio-note{grid-template-columns:1fr;gap:1.5rem;margin-top:4rem}.studio-note>p:last-child{font-size:1.45rem}}
 .commission form>button:disabled{cursor:wait;opacity:.65}.commission [role="alert"],.form-error{margin:0;color:#ffe1dc;font-size:.78rem;line-height:1.5}.form-success{align-self:start;padding:clamp(2rem,4vw,4rem);border:1px solid #ffffff8a;background:#ffffff0d}.form-success .eyebrow{margin:0 0 2rem;color:#f0ce76}.form-success h3{margin:0 0 1.5rem;font:400 clamp(2.2rem,4vw,4rem)/1.05 var(--serif)}.form-success>p:last-child{max-width:34rem;margin:0;line-height:1.7}
+.portrait-block .portrait-motto{max-width:500px;font-size:clamp(1.45rem,2.5vw,2rem)}
+@media(max-width:800px){.portrait-block .portrait-motto{max-width:100%;padding:1.6rem;font-size:1.45rem}}
